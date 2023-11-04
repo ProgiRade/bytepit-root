@@ -6,3 +6,16 @@ services:
             context: "../bytepit-api"
         ports:
             - "8000:80"
+        depends_on:
+            -   database
+        environment:
+            - DB_CONNECTION_STRING="postgresql://postgres:postgres@database:5432/rade_db"
+
+    database:
+        image: postgres
+        environment:
+            POSTGRES_DB: rade_db
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        ports:
+            - "5432:5432"
