@@ -9,7 +9,7 @@ services:
         depends_on:
             -   database
         environment:
-            - DB_CONNECTION_STRING="postgresql://postgres:postgres@database:5432/rade_db"
+            - DB_CONNECTION_STRING=host=database dbname=rade_db user=postgres password=postgres
 
     database:
         image: postgres
