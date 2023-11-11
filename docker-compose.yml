@@ -1,21 +1,22 @@
 version: "3"
 
 services:
-    api:
-        build:
-            context: "../bytepit-api"
-        ports:
-            - "8000:80"
-        depends_on:
-            -   database
-        environment:
-            - DB_CONNECTION_STRING=host=database dbname=rade_db user=postgres password=postgres
+  api:
+    build:
+      context: "../bytepit-api"
+    ports:
+      - "8000:80"
+    depends_on:
+      - database
+    environment:
+      - DB_CONNECTION_STRING=host=database dbname=rade_db user=postgres password=postgres
+      - SECRET_KEY=5ce3b19d23543100e7be58f39c430a8dfb1b4584fec88283583515b05481cdf4
 
-    database:
-        image: postgres
-        environment:
-            POSTGRES_DB: rade_db
-            POSTGRES_USER: postgres
-            POSTGRES_PASSWORD: postgres
-        ports:
-            - "5450:5432"
+  database:
+    image: postgres
+    environment:
+      POSTGRES_DB: rade_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5450:5432"
