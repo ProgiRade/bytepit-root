@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx} 
+
+\begin{document}
+
+Natjecatelj započinje proces predaje rješenja zadatka slanjem zahtjeva web-aplikaciji.
+Web-aplikacija proslijedi zahtjev evaluatoru za pokretanje programa nad testnim primjerima.
+
+\begin{itemize}
+  \item Evaluator proslijedi zahtjev third party compileru. 
+  \item Compiler pokreće program nad testnim primjerima  i šalje rezultate evalutatoru.
+  \item Evaluator izračunava broj dobivenih bodova i šalje ih web-aplikaciji.
+  \item Web-aplikacija ažurira natjecatelja s brojem dobivenih bodova.
+  \item Web-aplikacija šalje rezultate i broj bodova bazi podataka za spremanje.
+\end{itemize}
+
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{../slike/predaja_rjesenja_zadatka.png}
+  \caption{Sekvencijski dijagram predaje rješenja zadatka}\label{fig:solution_submission_diag}
+\end{figure}
+
+
+\end{document}
