@@ -48,7 +48,7 @@
 					
 				\end{packed_enum}
 			\end{packed_enum}
-			
+
 			\eject 
 			
 			
@@ -597,13 +597,50 @@
 						\label{fig:obrasci2}
 					\end{figure}
 				\eject		
-				
+
 			\subsection{Sekvencijski dijagrami}
+
+				\vspace{10mm}
+				\subsubsection*{UC9 Kreiranje natjecanja}
 				
-				\textbf{\textit{dio 1. revizije}}\\
+				Voditelj natjecanja započinje proces kreiranja natjecanja slanjem zahtjeva poslužitelju. Poslužitelj provjerava informacije o korisniku u bazi podataka kako bi utvrdila je li korisnik ovlašten za kreiranje natjecanja. Ako je korisnik voditelj natjecanja na web-aplikaciji otvara se forma za izradu natjecanja, voditelj šalje zahtjev za popis dostupnih zadataka, poslužitelj ih dohvaća iz baze podataka i prikazuje ih voditelju. Zatim voditelj odabire željene zadatke i kreira natjecanje. Poslužitelj sprema informacije o natjecanju u bazu podataka i šalje povratnu informaciju voditelju o uspješnom kreiranju natjecanja. Ako korisnik nije voditelj natjecanja poslužitelj šalje odgovor voditelju da samo voditelji natjecanja mogu kreirati zadatke.
+				\vspace{20mm}
+
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=\linewidth]{slike/kreiranje_natjecanja.png}
+					\caption{Sekvencijski dijagram kreiranja novog natjecanja}\label{fig:seqdiag_natjecanja}
+				\end{figure}
 				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
+				\clearpage 
+
+				\subsubsection*{UC10 Kreiranje zadatka}
+				
+				Voditelj natjecanja počinje proces kreiranja novog zadatka slanjem zahtjeva poslužitelju koji provjerava je li korisnik voditelj natjecanja. Ako je korisnik voditelj natjecanja poslužitelj omogućuje pristup formi za unos zadatka. Voditelj unosi detalje zadatka i testne primjere te šalje podatke. Poslužitelj prosljeđuje spremanje zadatka u bazu podataka te šalje potvrdu voditelju o uspješnom kreiranju zadatka. Ako korisnik nije voditelj natjecanja poslužitelj šalje poruku korisniku da samo voditelj natjecanja može kreirati zadatke.
+				\vspace{20mm}
+
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=\linewidth]{slike/kreiranje_zadatka.png}
+					\caption{Sekvencijski dijagram kreiranja novog zadatka}\label{fig:seqdiag_zadatka}
+				\end{figure}
+				
+				
+				\clearpage 
+				
+				\subsubsection*{UC11 Predaja rješenja}
+				
+				Natjecatelj započinje proces predaje rješenja zadatka slanjem zahtjeva poslužitelju koji proslijedi zahtjev evaluatoru za pokretanje programa nad testnim primjerima. Evaluator proslijedi zahtjev third party compileru. Compiler pokreće program nad testnim primjerima i šalje rezultate evaluatoru. Evaluator izračunava broj dobivenih bodova i šalje ih Poslužitelju koji ažurira natjecatelja s brojem dobivenih bodova te šalje rezultate i broj bodova bazi podataka za spremanje.
+				\vspace{20mm}
+
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=\linewidth]{slike/predaja_rjesenja_zadatka.png}
+					\caption{Sekvencijski dijagram predaje rješenja zadatka}\label{fig:seqdiag_rjesenja}
+				\end{figure}
+
+
+			\eject 
 	
 		\section{Ostali zahtjevi}
 		
