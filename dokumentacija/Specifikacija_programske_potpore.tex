@@ -48,7 +48,7 @@
 					
 				\end{packed_enum}
 			\end{packed_enum}
-			
+
 			\eject 
 			
 			
@@ -100,14 +100,51 @@
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
 					\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
-				\eject		
+				\eject
 				
 			\subsection{Sekvencijski dijagrami}
+
+				\vspace{10mm}
+				\subsubsection*{UC9 Kreiranje natjecanja}
 				
-				\textbf{\textit{dio 1. revizije}}\\
+				Voditelj natjecanja započinje proces kreiranja natjecanja slanjem zahtjeva web-aplikaciji. Web-aplikacija provjerava korisničke role u bazi podataka kako bi utvrdila je li korisnik ovlašten za kreiranje natjecanja. Ako je korisnik voditelj natjecanja web-aplikacija otvara formu za izradu natjecanja, voditelj šalje zahtjev za popis dostupnih zadataka, web-aplikacija dohvaća dostupne zadatke iz baze podataka i prikazuje ih voditelju. Zatim voditelj odabire željene zadatke i kreira natjecanje. Web-aplikacija sprema informacije o natjecanju u bazu podataka i šalje povratnu informaciju voditelju o uspješnom kreiranju natjecanja. Ako korisnik nije voditelj natjecanja web-aplikacija šalje odgovor voditelju da samo voditelji natjecanja mogu kreirati zadatke.
+				\vspace{20mm}
 				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=\linewidth]{slike/kreiranje_natjecanja.png}
+					\caption{Sekvencijski dijagram kreiranja novog natjecanja}\label{fig:seqdiag_natjecanja}
+				\end{figure}
+				
+				\clearpage 
+
+				\subsubsection*{UC10 Kreiranje zadatka}
+				
+				Voditelj natjecanja počinje proces kreiranja novog zadatka slanjem zahtjeva web-aplikaciji. Web-aplikacija provjerava da li je korisnik s pravima voditelja natjecanja. Ako je korisnik voditelj natjecanja web-aplikacija omogućuje pristup formi za unos zadatka. Voditelj unosi detalje zadatka i testne primjere te šalje podatke. Web-aplikacija sprema zadatak u bazu podataka. Web-aplikacija šalje potvrdu voditelju o uspješnom kreiranju zadatka. Ako korisnik nije voditelj natjecanja web-aplikacija šalje poruku korisniku da samo voditelj natjecanja može kreirati zadatke.
+				\vspace{20mm}
+
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=\linewidth]{slike/kreiranje_zadatka.png}
+					\caption{Sekvencijski dijagram kreiranja novog zadatka}\label{fig:seqdiag_zadatka}
+				\end{figure}
+				
+				
+				\clearpage 
+				
+				\subsubsection*{UC11 Predaja rješenja}
+				
+				Natjecatelj započinje proces predaje rješenja zadatka slanjem zahtjeva web-aplikaciji. Web-aplikacija proslijedi zahtjev evaluatoru za pokretanje programa nad testnim primjerima. Evaluator proslijedi zahtjev third party compileru. Compiler pokreće program nad testnim primjerima i šalje rezultate evaluatoru. Evaluator izračunava broj dobivenih bodova i šalje ih web-aplikaciji. Web-aplikacija ažurira natjecatelja s brojem dobivenih bodova te šalje rezultate i broj bodova bazi podataka za spremanje.
+				\vspace{20mm}
+
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=\linewidth]{slike/predaja_rjesenja_zadatka.png}
+					\caption{Sekvencijski dijagram predaje rješenja zadatka}\label{fig:seqdiag_rjesenja}
+				\end{figure}
+
+
+			\eject 
 	
 		\section{Ostali zahtjevi}
 		
