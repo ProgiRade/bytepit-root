@@ -644,9 +644,15 @@
 	
 		\section{Ostali zahtjevi}
 		
-			\textbf{\textit{dio 1. revizije}}\\
-		 
-			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
+			\begin{packed_item}
+				\item Cijeli sustav namijenjen je upotrebi na engleskom jeziku
+				\item Sustav mora biti u mogućnosti podržati veći broj korisnika zbog svoje namjene
+				\item Upotreba gotove aplikacije zamišljena je preko web preglednika
+				\item Aplikacija mora implementirati autentikaciju i autorizaciju svakog korisnika
+				\item Osjetljivi podaci od korisnika se moraju pretvarati u hash prije spremanja u bazu
+				\item Greška u jednom djelu sustava ne smije onemogućiti korištenje drugih usluga
+				\item Odgovori sustava prema korisniku moraju biti brzi i ne dulji od nekoliko sekundi
+			\end{packed_item}
 			 
 			 
 			 
