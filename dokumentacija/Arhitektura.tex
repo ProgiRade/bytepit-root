@@ -14,12 +14,12 @@
 	\textit{\underline{Aplikacija} se sastoji od dva glavna dijela, frontenda i backenda. Tehnologije koje se koriste na backendu
 	 uključuju programski jezik \textbf{Python} i \textbf{fastApi} web framework koji omogućuje stvaranje aplikacije temeljene na \textbf{REST}
 	 arhitekturi i rutera na kojem su definirane rute za slanje zahtjeva i komunikaciju korisnika i aplikacije.
-	 Frontend aplikacije izrađen je korištenjem JavaScript librarya React. On omogućuje korisniku jednostavan pregled
+	 Frontend aplikacije izrađen je korištenjem JavaScript librarya \textbf{React}. On omogućuje korisniku jednostavan pregled
 	 aplikacije i jednostavno korištenje aplikacije, odnosno slanje zahtjeva.}\\
 
 	\textit{\underline{Kontejneri} se koriste unutar aplikacije kako bi poboljšali korisničko iskustvo, optimizirali performanse sustava
 	te osigurali skalabilnost za povećani broj korisnika. Glavni se dio aplikacije s ruterima i logikom za komunikaciju s 
-	bazom nalazi u vlastitom kontejneru kao i glavna baza te evaluator.}\\
+	bazom nalazi u vlastitom kontejneru kao i glavna baza, evaluator i blob storage.}\\
 
 	\textit{Za \underline{bazu podataka} se koristi \textbf{SQL} specifično \textbf{PostgreSQL}. Glavna baza se nalazi u vlastitom kontejneru kojemu backend
 	aplikacije pristupa kako bi spremio informacije u nju. Na backendu se koristi \textbf{psycopg} PostgreSQL adapter koji omogućuje
@@ -30,6 +30,10 @@
 	izolacija korisničkih skripti od ostatka aplikacije. Kroz ovu komunikaciju, Evaluator prima kôd od korisnika,
 	proslijeđuje ga Code runneru na izvršavanje te zatim interpretira rezultate kako bi ih pravilno integrirao
 	natrag u aplikaciju.}
+
+	\textit{Dodatno, evaluator koristi \textbf{blob storage} pomoću kojeg dohvaća podatke koji su mu potrebni za
+	evaluaciju određenog zadatka. Evaluator ima pristup informacijama poput ulaznih podataka za testiranje,
+	očekivanih rezultata te drugih specifičnih parametara vezanih uz pojedini zadatak.}
 	
 	\newpage
 	
