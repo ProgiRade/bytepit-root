@@ -1,14 +1,37 @@
 \chapter{Arhitektura i dizajn sustava}
-		
-		\textbf{\textit{dio 1. revizije}}\\
+	\textit{Arhitektura cijelog sustava može se podijeliti na četiri ključna dijela:}
+		\begin{itemize}
+    		\item Web preglednik
+    		\item Web aplikacija
+    		\item Baza podataka
+    		\item Code runner
+		\end{itemize}
 
-		\textit{ Potrebno je opisati stil arhitekture te identificirati: podsustave, preslikavanje na radnu platformu, spremišta podataka, mrežne protokole, globalni upravljački tok i sklopovsko-programske zahtjeve. Po točkama razraditi i popratiti odgovarajućim skicama:}
-	\begin{itemize}
-		\item 	\textit{izbor arhitekture temeljem principa oblikovanja pokazanih na predavanjima (objasniti zašto ste baš odabrali takvu arhitekturu)}
-		\item 	\textit{organizaciju sustava s najviše razine apstrakcije (npr. klijent-poslužitelj, baza podataka, datotečni sustav, grafičko sučelje)}
-		\item 	\textit{organizaciju aplikacije (npr. slojevi frontend i backend, MVC arhitektura) }		
-	\end{itemize}
+	\textit{\underline{Web preglednik} omogućuje interakciju između korisnika i aplikacije. Svaki se korisnikov zahtjev
+	 događa na web pregledniku i prosljeđuje aplikaciji na obradu. Osim slanja zahtjeva, korisniku se omogućuje
+	  bolji pregled aplikacije pomoću apstraktnog koda kojeg web preglednik pretvara u lako shvatljive strukture.}\\
 
+	\textit{\underline{Aplikacija} se sastoji od dva glavna dijela, frontenda i backenda. Tehnologije koje se koriste na backendu
+	 uključuju programski jezik \textbf{Python} i \textbf{fastApi} web framework koji omogućuje stvaranje aplikacije temeljene na \textbf{REST}
+	 arhitekturi i rutera na kojem su definirane rute za slanje zahtjeva i komunikaciju korisnika i aplikacije.
+	 Frontend aplikacije izrađen je korištenjem JavaScript librarya React. On omogućuje korisniku jednostavan pregled
+	 aplikacije i jednostavno korištenje aplikacije, odnosno slanje zahtjeva.}\\
+
+	\textit{\underline{Kontejneri} se koriste unutar aplikacije kako bi poboljšali korisničko iskustvo, optimizirali performanse sustava
+	te osigurali skalabilnost za povećani broj korisnika. Glavni se dio aplikacije s ruterima i logikom za komunikaciju s 
+	bazom nalazi u vlastitom kontejneru kao i glavna baza te evaluator.}\\
+
+	\textit{Za \underline{bazu podataka} se koristi \textbf{SQL} specifično \textbf{PostgreSQL}. Glavna baza se nalazi u vlastitom kontejneru kojemu backend
+	aplikacije pristupa kako bi spremio informacije u nju. Na backendu se koristi \textbf{psycopg} PostgreSQL adapter koji omogućuje
+	komunikaciju između baze i backenda.}\\
+	
+	\textit{\underline{Evaluator} komunicira s vanjskim \underline{Code runnerom} za kompajliranje kodova koje korisnik šalje
+	na backend. Ovaj ključni dio sustava odgovoran je za izvršavanje kôda unutar sigurnog okruženja, čime se osigurava
+	izolacija korisničkih skripti od ostatka aplikacije. Kroz ovu komunikaciju, Evaluator prima kôd od korisnika,
+	proslijeđuje ga Code runneru na izvršavanje te zatim interpretira rezultate kako bi ih pravilno integrirao
+	natrag u aplikaciju.}
+	
+	\newpage
 	
 		
 
