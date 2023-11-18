@@ -43,138 +43,122 @@
 
 				
 		\section{Baza podataka}
-			
+		
 		Za implementaciju našeg sustava koristit ćemo PostgreSQL, relacijsku bazu podataka. Ovaj tip baze podataka posebno je pogodan za modeliranje kompleksnih struktura koje odražavaju realni svijet, zahvaljujući svojoj sposobnosti da efikasno upravlja relacijama, odnosno tablicama. Svaka tablica u bazi unikatno je definirana svojim nazivom i skupom atributa, čime se omogućava precizno strukturiranje podataka. Jedna od ključnih prednosti PostgreSQL baze je njena brzina i efikasnost u obradi podataka, uključujući pohranu, ažuriranje i dohvaćanje informacija. Naša baza podataka obuhvatit će niz entiteta koji su specifično prilagođeni zahtjevima naše aplikacije.
-		Popis entiteta: users, competitions, problems, competition_participations, problems_on_competitions, problem_results, trophies i verification_tokens.
-			\subsection{Opis tablica}
-			
-
-				\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. 
-				Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, 
-				a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
-				
-				
-				\subsubsection*{Users}
-				
-				Entitet \bold{users} sadržava sve važne informacije o korisniku aplikacije. Sadrži atribute: \textit{id, role, username, image_url, password_hash, email, name, surname, is\_verified, created\_on}. Ovaj entitet je u \textit{many to many} vezi s entitetom \textit{competitions} preko tablice \textit{competition\_participations}. Ovaj entitet je u \textit{one to many} vezi s entitetom \textit{verification\_tokens} preko atributa \textit{email}. 
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/users_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Problems}
-
-				Entitet \bold{problems} sadržava sve važne informacije o zadacima. Sadržava atribute: \textit{id, name, description, example\_input, example\_output, is\_hidden, num\_of\_points, runtime\_limit, description, tests\_dir, is_\_private, created\_on}. Ovaj entitet je u \textit{many to many} vezi s entitetom \textit{competitions} preko tablice \textit{problems\_on\_competitions}. Ovaj entitet je u \textit{one to many} vezi s entitetom \textit{problem\_results} preko atributa \textit{id}.
-
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/problems_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Competitions}
-
-				Entitet \bold{competitions} sadržava sve važne informacije o natjecanjima. Sadržava atribute: \textit{id, name, description, start\_time, end\_time, parent\_id, problems}. Natjecanja mogu imati svoja nadređena natjecanja. Ovaj entitet je u \textit{many to many} vezi s users entitetom preko competition\_participations tablice. Ovaj entitet je u \textit{many to many} vezi s problems entitetom preko problems\_on\_competitions tablice.                          
-			
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/competitions_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Competition\_participations}
-
-				Entitet \bold{competition\_participations} sadržava sve važne informacije o sudjelovanju korisnika na natjecanjima. Sadržava atribute: \textit{id, user\_id, competition\_id, num\_of\_points}. Ovaj entitet je u \textit{many to many} vezi s users entitetom. Ovaj entitet je u \textit{many to many} vezi s competitions entitetom preko atributa \textit{competition\_id}.
-
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/competition_participations_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Problems\_on\_competitions}
-
-				Entitet \bold{problems\_on\_competitions} sadržava informacije o zadacima koji pripadaju pojedinim natjecanjima. Sadržava atribute: \textit{id, problem\_id, competition\_id, num\_of\_points}.
-
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/problems_on_competitions_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Problem\_results}
-
-				\vspace{20mm}
-
-				Entitet \bold{problems\_results} sadrži rezultate pojedinih korisnika na pojedinim zadacima. Sadržava atribute: \textit{id, user\_id, problem\_id, competition\_id, num\_of\_points, average\_runtime, is\_correct, source\_code} i\textit{one to many} vezi s users entitetom preko users\_id te \textit{one to many} vezi s problems entitetom preko atributa \textit{problem\_id}. Ovaj entitet je u \textit{one to many} vezi s competitions entitetom preko atributa \textit{competition\_id}.
-
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/problem_results_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Trophies}
-
-				Entitet \bold{trophies} sadržava informacije o trofejima koje korisnici mogu osvojiti. Sadržava atribute: \textit{id, competition\_id, user\_id, position, icon }. Ovaj entitet je u \textit{one to many} vezi s users entitetom preko atributa \textit{user\_id} te \textit{one to many} vezi s competitions entitetom preko atributa \textit{competition\_id}.
-			
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/trophies_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\subsubsection*{Verification\_tokens}
-
-				Entitet \bold{verification\_tokens} sadržava informacije o tokenima za verifikaciju korisnika. Sadržava atribute: \textit{token, email, expiry\_date}. Ovaj entitet je u \textit{one to many} vezi s users entitetom preko atributa \textit{email}.
-
-				\vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/verification_tokens_tablica.png}
-				\end{figure}
-
-				\vspace{30mm}
-
-				\clearpage
-				\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
-				vspace{20mm}
-
-				\begin{figure}[htbp]
-					\centering
-					\includegraphics[width=\linewidth]{slike/db_dijagram.png}
-				\end{figure}
-
-			\eject
-			
+		
+		\textit{Popis entiteta: users, competitions, problems, competition\_participations, problems\_on\_competitions, 
+			problem\_results, trophies i verification\_tokens.}
+		
+		\subsection{Opis tablica}
+		
+		\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. 
+			Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, 
+			a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
+		\eject
+		
+		\subsubsection*{Users}
+		
+		Entitet \textbf{users} sadržava sve važne informacije o korisniku aplikacije. Sadrži atribute: \textit{id, role, username, image\_url, password\_hash, email, name, surname, is\_verified, created\_on}. 
+		Ovaj entitet je u \textit{many-to-many} vezi s entitetom \textit{competitions} preko tablice \textit{competition\_participations}. Ovaj entitet je u \textit{one-to-many} vezi s entitetom \textit{verification\_tokens} preko atributa \textit{email}. 
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/users_tablica.png}
+			\caption{Entitet \textbf{users}}
+		\end{figure}
+		\eject
+		
+		\subsubsection*{Problems}
+		
+		Entitet \textbf{problems} sadržava sve važne informacije o zadacima. Sadržava atribute: \textit{id, name, description, example\_input, example\_output, is\_hidden, num\_of\_points, runtime\_limit, tests\_dir, is\_private, created\_on}. Ovaj entitet je u \textit{many-to-many} vezi s entitetom \textit{competitions} preko tablice \textit{problems\_on\_competitions}. Ovaj entitet je u \textit{one-to-many} vezi s entitetom \textit{problem\_results} preko atributa \textit{id}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/problems_tablica.png}
+			\caption{Entitet \textbf{problems}}
+		\end{figure}
+		\eject
+		
+		\subsubsection*{Competitions}
+		
+		Entitet \textbf{competitions} sadržava sve važne informacije o natjecanjima. Sadržava atribute: \textit{id, name, description, start\_time, end\_time, parent\_id, problems}. Natjecanja mogu imati svoja nadređena natjecanja. Ovaj entitet je u \textit{many-to-many} vezi s entitetom \textit{users} preko \textit{competition\_participations} tablice. Ovaj entitet je u \textit{many-to-many} vezi s entitetom \textit{problems} preko \textit{problems\_on\_competitions} tablice.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/competitions_tablica.png}
+			\caption{Entitet \textbf{competitions}}
+		\end{figure}
+		
+		\subsubsection*{Competition\_participations}
+		
+		Entitet \textbf{competition\_participations} sadržava sve važne informacije o sudjelovanju korisnika na natjecanjima. Sadržava atribute: \textit{id, user\_id, competition\_id, num\_of\_points}. Ovaj entitet je u \textit{many-to-many} vezi s entitetom \textit{users}. Ovaj entitet je u \textit{many-to-many} vezi s entitetom \textit{competitions} preko atributa \textit{competition\_id}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/competition_participations_tablica.png}
+			\caption{Entitet \textbf{competition\_participations}}
+		\end{figure}
+		
+		\subsubsection*{Problems\_on\_competitions}
+		
+		Entitet \textbf{problems\_on\_competitions} sadržava informacije o zadacima koji pripadaju pojedinim natjecanjima. Sadržava atribute: \textit{id, problem\_id, competition\_id, num\_of\_points}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/problems_on_competitions_tablica.png}
+			\caption{Entitet \textbf{problems\_on\_competitions}}
+		\end{figure}
+		
+		\eject
+		
+		\subsubsection*{Problem\_results}
+		
+		Entitet \textbf{problem\_results} sadrži rezultate pojedinih korisnika na pojedinim zadacima. Sadržava atribute: \textit{id, user\_id, problem\_id, competition\_id, num\_of\_points, average\_runtime, is\_correct, source\_code}. Ovaj entitet je u \textit{one-to-many} vezi s entitetom \textit{users} preko \textit{user\_id} te \textit{one-to-many} vezi s entitetom \textit{problems} preko atributa \textit{problem\_id}. Ovaj entitet je u \textit{one-to-many} vezi s entitetom \textit{competitions} preko atributa \textit{competition\_id}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/problem_results_tablica.png}
+			\caption{Entitet \textbf{problem\_results}}
+		\end{figure}
+		
+		\eject
+		
+		\subsubsection*{Trophies}
+		
+		Entitet \textbf{trophies} sadržava informacije o trofejima koje korisnici mogu osvojiti. Sadržava atribute: \textit{id, competition\_id, user\_id, position, icon}. Ovaj entitet je u \textit{one-to-many} vezi s entitetom \textit{users} preko atributa \textit{user\_id} te \textit{one-to-many} vezi s entitetom \textit{competitions} preko atributa \textit{competition\_id}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/trophies_tablica.png}
+			\caption{Entitet \textbf{trophies}}
+		\end{figure}
+		
+		\subsubsection*{Verification\_tokens}
+		
+		Entitet \textbf{verification\_tokens} sadržava informacije o tokenima za verifikaciju korisnika. Sadržava atribute: \textit{token, email, expiry\_date}. Ovaj entitet je u \textit{one-to-many} vezi s entitetom \textit{users} preko atributa \textit{email}.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=\linewidth]{slike/verification_tokens_tablica.png}
+			\caption{Entitet \textbf{verification\_tokens}}
+		\end{figure}
+		
+		\eject
+		
+		\subsection{Dijagram baze podataka}
+		
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.4]{slike/db_dijagram.png}
+			\caption{Dijagram baze podataka}
+		\end{figure}
+		\eject
+		
 			
 		\section{Dijagram razreda}
 		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
+			
 			
 			Na sljedećim slikama prikazani su dijagrami razreda koji pripadaju backend dijelu aplikacije.
 			
@@ -182,15 +166,14 @@
 				\centering
 				\includegraphics[width=\linewidth]{slike/dijagram_razreda.png}
 			\end{figure}
+			
+			
 
 			\begin{figure}[htbp]
 				\centering
 				\includegraphics[width=\linewidth]{slike/dto.png}
 			\end{figure}
-
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
+			\eject
 			
 			\textbf{\textit{dio 2. revizije}}\\			
 			
