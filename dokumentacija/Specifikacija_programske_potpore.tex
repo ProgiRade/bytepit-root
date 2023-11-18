@@ -1,21 +1,15 @@
 \chapter{Specifikacija programske potpore}
 		
-	\section{Funkcionalni zahtjevi}
-			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
+	\section{Funkcionalni zahtjevi}			
 			
 			\noindent \textbf{Dionici:}
 			
 			\begin{packed_enum}
 				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
+				\item Administrator
+				\item Voditelj natjecanja				
+				\item Natjecatelj
+				\item Razvojni tim
 				
 			\end{packed_enum}
 			
@@ -23,28 +17,53 @@
 			
 			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
+				\item  \underbar{Administrator (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
-				
-					\end{packed_enum}
-					\item  funkcionalnost 3
+					\item pregledati korisnike
+					\item pregledati natjecanja
+					\item pregledati zadatke
+					\item mijenjati prava korisnicima
 					
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
+				\item  \underbar{Neregistrirani korisnik (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item se registrirati u sustav
+					\item stvoriti novi korisnički račun
+					
+				\end{packed_enum}
+
+				\item  \underbar{Voditelj natjecanja (inicijator) može:}
+				
+				\begin{packed_enum}
+					
+					\item kreirati nove zadatke
+					\item kreirati nova natjecanja
+					\item pregledati svoje osobne podatke
+					
+				\end{packed_enum}
+
+				\item  \underbar{Natjecatelj (inicijator) može:}
+				
+				\begin{packed_enum}
+					
+					\item pristupiti natjecanjima
+					\item pregledati svoje osobne podatke
+					\item pregledati zadatke
+					\item predati rješenje zadatka
+					
+				\end{packed_enum}
+
+				\item  \underbar{Baza podataka (sudionik):}
+				
+				\begin{packed_enum}
+					
+					\item pohranjuje sve podatke o korisnicima
+					\item pohranjuje sve podatke o natjecanjima i zadacima
 					
 				\end{packed_enum}
 			\end{packed_enum}
@@ -596,7 +615,7 @@
 						\caption{Dijagram obrasca uporabe, fukcionalnost administratora}
 						\label{fig:obrasci2}
 					\end{figure}
-				\eject		
+				\eject
 
 			\subsection{Sekvencijski dijagrami}
 
