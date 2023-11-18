@@ -1,5 +1,5 @@
 \chapter{Arhitektura i dizajn sustava}
-	\textit{Arhitektura cijelog sustava može se podijeliti na četiri ključna dijela:}
+	{Arhitektura cijelog sustava može se podijeliti na četiri ključna dijela:}
 		\begin{itemize}
     		\item Web preglednik
     		\item Web aplikacija
@@ -7,31 +7,31 @@
     		\item Code runner
 		\end{itemize}
 
-	\textit{\underline{Web preglednik} omogućuje interakciju između korisnika i aplikacije. Svaki se korisnikov zahtjev
+	{\underline{Web preglednik} omogućuje interakciju između korisnika i aplikacije. Svaki se korisnikov zahtjev
 	 događa na web pregledniku i prosljeđuje aplikaciji na obradu. Osim slanja zahtjeva, korisniku se omogućuje
 	  bolji pregled aplikacije pomoću apstraktnog koda kojeg web preglednik pretvara u lako shvatljive strukture.}\\
 
-	\textit{\underline{Aplikacija} se sastoji od dva glavna dijela, frontenda i backenda. Tehnologije koje se koriste na backendu
-	 uključuju programski jezik \textbf{Python} i \textbf{fastApi} web framework koji omogućuje stvaranje aplikacije temeljene na \textbf{REST}
+	{\underline{Aplikacija} se sastoji od tri  servisa, frontenda, API servisa i evaluatora. Tehnologije koje se koriste na backendu
+	 uključuju programski jezik \textbf{Python} i \textbf{FastApi} web framework koji omogućuje stvaranje aplikacije temeljene na \textbf{REST}
 	 arhitekturi i rutera na kojem su definirane rute za slanje zahtjeva i komunikaciju korisnika i aplikacije.
-	 Frontend aplikacije izrađen je korištenjem JavaScript librarya \textbf{React}. On omogućuje korisniku jednostavan pregled
+	 Frontend aplikacije izrađen je korištenjem libraryja \textbf{React}, a kod je pisan u \textbf{TypeScriptu}. On omogućuje korisniku jednostavan pregled
 	 aplikacije i jednostavno korištenje aplikacije, odnosno slanje zahtjeva.}\\
 
-	\textit{\underline{Kontejneri} se koriste unutar aplikacije kako bi poboljšali korisničko iskustvo, optimizirali performanse sustava
+	{\underline{Kontejneri} se koriste unutar aplikacije kako bi poboljšali korisničko iskustvo, optimizirali performanse sustava
 	te osigurali skalabilnost za povećani broj korisnika. Glavni se dio aplikacije s ruterima i logikom za komunikaciju s 
 	bazom nalazi u vlastitom kontejneru kao i glavna baza, evaluator i blob storage.}\\
 
-	\textit{Za \underline{bazu podataka} se koristi \textbf{SQL} specifično \textbf{PostgreSQL}. Glavna baza se nalazi u vlastitom kontejneru kojemu backend
+	{Za primarnu \underline{bazu podataka} koristi se \textbf{PostgreSQL}. Primarna baza se nalazi u vlastitom kontejneru kojemu backend
 	aplikacije pristupa kako bi spremio informacije u nju. Na backendu se koristi \textbf{psycopg} PostgreSQL adapter koji omogućuje
 	komunikaciju između baze i backenda.}\\
 	
-	\textit{\underline{Evaluator} komunicira s vanjskim \underline{Code runnerom} za kompajliranje kodova koje korisnik šalje
+	{\underline{Evaluator} komunicira s vanjskim \underline{Code runnerom} za kompajliranje kodova koje korisnik šalje
 	na backend. Ovaj ključni dio sustava odgovoran je za izvršavanje kôda unutar sigurnog okruženja, čime se osigurava
 	izolacija korisničkih skripti od ostatka aplikacije. Kroz ovu komunikaciju, Evaluator prima kôd od korisnika,
 	proslijeđuje ga Code runneru na izvršavanje te zatim interpretira rezultate kako bi ih pravilno integrirao
 	natrag u aplikaciju.}
 
-	\textit{Dodatno, evaluator koristi \textbf{blob storage} pomoću kojeg dohvaća podatke koji su mu potrebni za
+	{Dodatno, evaluator koristi \textbf{blob storage} (Azure blob storage) pomoću kojeg dohvaća podatke koji su mu potrebni za
 	evaluaciju određenog zadatka. Evaluator ima pristup informacijama poput ulaznih podataka za testiranje,
 	očekivanih rezultata te drugih specifičnih parametara vezanih uz pojedini zadatak.}
 	
@@ -49,12 +49,10 @@
 		\textit{Popis entiteta: users, competitions, problems, competition\_participations, problems\_on\_competitions, 
 			problem\_results, trophies i verification\_tokens.}
 		
+		
+		\eject
 		\subsection{Opis tablica}
 		
-		\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. 
-			Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, 
-			a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
-		\eject
 		
 		\subsubsection*{Users}
 		
