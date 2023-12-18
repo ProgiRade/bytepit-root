@@ -12,6 +12,8 @@ services:
       - DB_CONNECTION_STRING=host=database dbname=rade_db user=postgres password=postgres
       - SECRET_KEY=5ce3b19d23543100e7be58f39c430a8dfb1b4584fec88283583515b05481cdf4
       - EMAIL_PASSWORD=eiqvhltmwaoyxtuj
+      - BLOB_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=bytepitstorageaccount;AccountKey=STW6NC26wOXcmVpFgDYeKaC2d9O6NWaYeiTP5lG1HRFNpcZILym8FQtXL6tWgp43N4VwEzNytW0i+AStdcuiuA==;EndpointSuffix=core.windows.net
+      - BLOB_STORAGE_CONTAINER_NAME=tests-dir
 
   database:
     image: postgres
