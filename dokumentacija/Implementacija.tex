@@ -38,11 +38,19 @@
 		
 		
 		\section{Dijagram razmještaja}
+
+			 Dijagrami razmještaja opisuju topologiju sklopovlja i programsku potporu koja se koristi u implementaciji sustava u njegovom radnom okruženju.
+			 Na azure app service-u nalaze se API sa evaluatorom rješenja, poslužitelj baze podataka (azure sql database) te third party servis za kompajliranje koda.
+			 Klijenti koriste web preglednik za pristup web aplikaciji. Sustav je baziran na REST API arhitekturi, a komunikacija između klijenta i poslužitelja odvija se preko HTTP veze.
+
+			 \eject
 			
-			\textbf{\textit{dio 2. revizije}}
-			
-			 \textit{Potrebno je umetnuti \textbf{specifikacijski} dijagram razmještaja i opisati ga. Moguće je umjesto specifikacijskog dijagrama razmještaja umetnuti dijagram razmještaja instanci, pod uvjetom da taj dijagram bolje opisuje neki važniji dio sustava.}
-			
+			\begin{figure}[H]
+				\includegraphics[width=\linewidth]{slike/dijagram_razmjestaja.png} 
+				\centering
+				\caption{Dijagram razmještaja}
+				\label{fig:razmjestaj}
+			\end{figure}
 			\eject 
 		
 		\section{Upute za puštanje u pogon}
