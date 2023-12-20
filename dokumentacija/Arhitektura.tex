@@ -205,7 +205,7 @@
 			
 			Prvo sučelje ima funkciju prikupljanja Typescript datoteka koje pripadaju frontend dijelu aplikacije. Ključnu ulogu ima Router, određujući koje će datoteke biti poslužene na sučelju. Frontend se sastoji od niza cjelina organiziranih prema tipovima korisnika, a Typescript datoteke koriste React, Tailwind i Primereact biblioteke za integraciju već pripremljenih komponenata.
 			
-			Drugo sučelje ima ulogu u preuzimanju JSON podataka i pristupanju REST API komponentama koje poslužuju podatke iz backend dijela aplikacije. DatabaseFileRetrieval zadatak ima dohvaćanje datoteka iz baze podataka korištenjem SQL upita, a zatim ti podaci putuju prema DTO-u. Reactview komponenta komunicira s ostatkom aplikacije putem dostupnih sučelja. Sustav uključuje Evaluator komponentu koja komunicira s BLOB storage-om i odgovorna je za obradu i evaluaciju rješenja zadataka. Ovaj dio sustava doprinosi skalabilnosti, efikasnosti i fleksibilnosti u upravljanju podacima.
+			Drugo sučelje ima ulogu u preuzimanju JSON podataka i pristupanju REST API komponentama koje poslužuju podatke iz backend dijela aplikacije. DatabaseFileRetrieval zadatak ima dohvaćanje datoteka iz baze podataka korištenjem SQL upita, a zatim ti podaci putuju prema DTO-u. Reactview komponenta komunicira s ostatkom aplikacije putem dostupnih sučelja. Sustav uključuje Evaluator komponentu koja komunicira s BLOB storage-om i odgovorna je za evaluaciju rješenja zadataka. Evaulator koristi Compiler kako bi doznao ispis korisnikova koda, te ga uspoređuje sa ispravnim koji je na BLOB storage-u. Ovaj dio sustava doprinosi skalabilnosti, efikasnosti i fleksibilnosti u upravljanju podacima.
 			 
 			 \eject
 			 
