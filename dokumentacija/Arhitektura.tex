@@ -173,11 +173,12 @@
 			\end{figure}
 			\eject
 			
-			\textbf{\textit{dio 2. revizije}}\\			
-			
-			\textit{Prilikom druge predaje projekta dijagram razreda i opisi moraju odgovarati stvarnom stanju implementacije}
-			
-			
+			\begin{figure}[H]
+				\includegraphics[width=\linewidth]{slike/ImplementacijskiDijagramRazreda}
+				\centering
+				\caption{Implementacijski dijgram razreda}
+				\label{fig:implementacija}
+			\end{figure}
 			
 			\eject
 		
@@ -201,10 +202,15 @@
 		
 		\section{Dijagram aktivnosti}
 			
-			\textbf{\textit{dio 2. revizije}}\\
+			Dijagram aktivnosti prikazuje proces rješavanja jednog zadatka od prijave u sustav pa sve do predaje rješenja. Korisnik otvara web aplikaciju i unosi svoje pristupne podatke. Web aplikacija šalje upit bazi podataka radi provjere pristupnih podataka korisnika. Ako su pristupni podaci ispravni, korisnik je uspješno prijavljen, inače se vraća na stranicu za prijavu. Web aplikacija prikazuje dostupne zadatke korisniku. Korisnik pregledava dostupne zadatke i odabire zadatak koji želi riješiti. Web aplikacija šalje upit bazi podataka za dohvat podataka odabranog zadatka. Podaci zadatka se prikazuju korisniku. Korisnik rješava zadani zadatak i predaje svoje rješenje putem web aplikacije. Web aplikacija šalje rješenje korisnika compileru. Aplikacija preuzima testne podatke iz blob storagea, šalje ih compileru koji izvršava program s korisnikovim rješenjem. Rezultati izvršavanja programa vraćaju se web aplikaciji. Rezultati izvršavanja programa prikazuju se korisniku, uključujući informacije o ispravnosti rješenja i ostale relevantne informacije. Ako je korisnik zadovoljan rezultatima, može ponovno predati drugo rješenje ili poslati zahtjev za konačnom predajom zadatka. Ako korisnik želi konačno predati rješenje, proces završava.
+			\eject
 			
-			 \textit{Potrebno je priložiti dijagram aktivnosti s pripadajućim opisom. Dijagram aktivnosti treba prikazivati značajan dio sustava.}
-			
+			\begin{figure}[H]
+				\includegraphics[width=\linewidth]{slike/DijagramAktivnosti.png}
+				\centering
+				\caption{Dijagram aktivnosti}
+				\label{fig:aktivnost}
+			\end{figure}
 			\eject
 		\section{Dijagram komponenti}
 		
