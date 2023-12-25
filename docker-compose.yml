@@ -16,7 +16,6 @@ services:
             - BLOB_STORAGE_CONTAINER_NAME=tests-dir
             - COMMUNICATION_SERVICES_CONNECTION_STRING=endpoint=https://bypit-email.europe.communication.azure.com/;accesskey=B+X+DVh9MAZ0a5AXtMWlGjTobTGRc1FAY/9tiySC9x+ZjRBGK8O1NEULwLkVGU25IPT84RFRRO1lYIR2bkDo3A==
             - UI_URL=http://localhost:3000
-
     database:
         image: postgres
         environment:
