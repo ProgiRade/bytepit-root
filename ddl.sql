@@ -43,15 +43,6 @@ CREATE TABLE competitions (
     problems        UUID[]
 );
 
-
-CREATE TABLE competition_participations (
-    id              uuid            DEFAULT uuid_generate_v4() PRIMARY KEY,
-    user_id         UUID            NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    competition_id  UUID            NOT NULL REFERENCES competitions(id) ON DELETE CASCADE,
-    num_of_points   REAL            NOT NULL CHECK (num_of_points > 0)
-);
-
-
 CREATE TABLE problem_results (
     id              uuid            DEFAULT uuid_generate_v4() PRIMARY KEY,
     problem_id      UUID            NOT NULL REFERENCES problems(id) ON DELETE CASCADE,
